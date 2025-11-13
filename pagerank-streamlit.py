@@ -238,12 +238,10 @@ st.markdown("---")
 st.info("""
 💡 **Sobre o PageRank:**
 
-O PageRank é um algoritmo usado pelo Google para classificar páginas da web. 
+O [PageRank](http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf) é um algoritmo usado pelo Google para classificar páginas da web. 
 Ele funciona modelando o comportamento de um navegador aleatório que clica em links 
 com probabilidade α ou salta para uma página aleatória com probabilidade (1-α).
 
-**Observação:** Vértices que recebem mais conexões nem sempre têm o maior PageRank. 
-A qualidade e origem das conexões também importam!
 """)
 
 # Footer
@@ -251,7 +249,7 @@ st.markdown("---")
 st.markdown(
     """
     <div style='text-align: center; color: #7f8c8d;'>
-        <p>Introdução aos Processos Estocásticos </p>
+        <p>Introdução aos Processos Estocásticos --- UFABC</p>
     </div>
     """,
     unsafe_allow_html=True
