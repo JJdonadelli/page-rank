@@ -15,7 +15,8 @@ def calculate_pagerank(edges, num_nodes, alpha):
     N = num_nodes
     
     if len(edges) == 0:
-        return np.ones(N) / N
+        v = np.ones(N) / N
+        return v ,  [v.copy()]
     
     # Criar matriz de adjacência
     A = np.zeros((N, N))
