@@ -109,7 +109,7 @@ st.sidebar.header("⚙️ Configurações")
 # Seleção do grafo
 graph_type = st.sidebar.selectbox(
     "Selecione o Grafo:",
-    ["Exemplo 1 - Notebook", "Exemplo 2 - Assimétrico", "Exemplo Simples", "Personalizado"]
+    ["Exemplo da aula", "Exemplo 1 - Notebook", "Exemplo 2 - Assimétrico", "Exemplo Simples", "Personalizado"]
 )
 
 # Parâmetro alpha
@@ -123,7 +123,11 @@ alpha = st.sidebar.slider(
 )
 
 # Definir grafos de exemplo
-if graph_type == "Exemplo 1 - Notebook":
+if graph_type == "Exemplo da aula":
+    num_nodes = 6
+    edges = [(1,2), (1,3), (2,1), (2,3), (3,1), (3,2), (4,1), (4,5), (4,6), (5,3), (5,4), (5,6)]
+
+elif graph_type == "Exemplo 1 - Notebook":
     num_nodes = 6
     edges = [(1,2), (1,3), (3,1), (3,2), (3,5), (5,4), (5,6), (4,5), (4,6), (6,4)]
     
