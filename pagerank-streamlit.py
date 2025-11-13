@@ -40,11 +40,14 @@ def calculate_pagerank(edges, num_nodes, alpha):
     
     # Método das potências
     v = np.ones(N) / N
+    history = [v.copy()]
     for _ in range(100):
         v = G.T @ v
         v = v / np.sum(v)
+        history.append(v.copy())
+        
     
-    return v
+    return v , history
 
 # Função para desenhar o grafo
 def draw_graph(edges, num_nodes, pagerank_values):
@@ -115,7 +118,7 @@ graph_type = st.sidebar.selectbox(
 # Parâmetro alpha
 alpha = st.sidebar.slider(
     "Parâmetro α (damping factor):",
-    min_value=0.5,
+    min_value=0.01,
     max_value=0.99,
     value=0.85,
     step=0.01,
@@ -185,7 +188,7 @@ else:  # Personalizado
         edges = st.session_state.custom_edges
 
 # Calcular PageRank
-pagerank_values = calculate_pagerank(edges, num_nodes, alpha)
+pagerank_values , history = calculate_pagerank(edges, num_nodes, alpha)
 
 # Layout principal
 col1, col2 = st.columns([1, 1])
@@ -224,6 +227,19 @@ with col1:
         'PageRank': pagerank_values
     })
     st.bar_chart(chart_data.set_index('Vértice'))
+    # Gráfico de convergência
+    st.subheader("🔄 Convergência do PageRank")
+    history_array = np.array(history)
+    fig_convergence, ax_convergence = plt.subplots(figsize=(8, 5))
+    for i in range(num_nodes):
+        ax_convergence.plot(history_array[:, i], label=f"Página {i+1}", linewidth=2)
+    ax_convergence.set_xlabel("Iteração", fontsize=12)
+    ax_convergence.set_ylabel("Probabilidade", fontsize=12)
+    ax_convergence.set_title(f"Convergência do PageRank (α={alpha})", fontsize=14, fontweight='bold')
+    ax_convergence.legend(loc='best', fontsize=9)
+    ax_convergence.grid(True, alpha=0.3)
+    plt.tight_layout()
+    st.pyplot(fig_convergence)
 
 with col2:
     st.subheader("🕸️ Visualização do Grafo")
