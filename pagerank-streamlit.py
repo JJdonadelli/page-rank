@@ -175,8 +175,8 @@ else:  # Personalizado
     )
     
     # Atualizar edges do texto
+    edges = []  # Inicializar edges aqui
     try:
-        edges = []
         for line in edges_text.strip().split('\n'):
             if line.strip():
                 parts = line.split(',')
