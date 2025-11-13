@@ -8,7 +8,7 @@ st.set_page_config(page_title="Algoritmo PageRank", page_icon="🔍", layout="wi
 
 # Título
 st.title("🔍 Algoritmo PageRank")
-# st.markdown("### Processos Estocásticos - Análise de Redes")
+
 
 # Função para calcular PageRank
 def calculate_pagerank(edges, num_nodes, alpha):
